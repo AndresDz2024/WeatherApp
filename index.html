@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="sp">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,18 +9,25 @@
     <script type="module" defer src="js/main.js"></script>
 </head>
 <body>
-    <!-- Elimina esto para comenzar. 👇-->
-    <div class="saludo">
-        <h1>Google Weather App Redesign</h1>
-        <h3>CampusLands</h3>
-        <p>
-            Es un placer contar con su talento y dedicación para llevar a cabo este pushup desafiante. 
-            Estamos seguros de que su experiencia y creatividad serán clave para alcanzar 
-            los objetivos propuestos y crear algo innovador y de alto impacto. Ustedes lograrán desarrollar 
-            soluciones eficientes y de calidad, siempre con el compromiso y el entusiasmo que los caracteriza.<br><br>
-            <b>¡Les deseamos mucho éxito en este nuevo desafío, y estamos aquí para apoyarlos en cada paso del camino!</b>
-        </p>
+    <div id="weather-info">
+        <p id="location"></p>
+        <p id="temperature"></p>
+        <p id="feels-like"></p> <!-- Add this line -->
+        <p id="condition"></p>
+        <p id="current-time"></p>
+        <p id="wind-speed"></p>
+        <p id="rain-chance"></p>
+        <p id="pressure"></p>
+        <p id="uv-index"></p>
     </div>
-    <!--------------------------------☝️->
+    <div id="forecast-info">
+        <h2>Hourly Forecast</h2>
+        <div id="hourly-forecast"></div>
+    </div>
+    <div id="chance-of-rain">
+        <h2>Probabilidad de Lluvia</h2>
+        <div id="rain-probabilities"></div>
+    </div>
+    
 </body>
 </html>

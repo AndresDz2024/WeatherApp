@@ -10,21 +10,139 @@ body{
     background: var(--background-1);
 }
 
-/* Elimina esto para comenzar. 👇*/
-.saludo{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.saludo h3{
-    color: var(--color-3);
-    margin-top: 15px;
-}
-.saludo p{
+/* Estilos para la ubicación */
+#location {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para la temperatura */
+  #temperature {
+    font-size: 2em;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para la condición climática */
+  #condition {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para la fecha y hora */
+  #current-time {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para la velocidad del viento */
+  #wind-speed {
     margin-top: 10px;
-    width: 50%;
-    text-align: center;
+    font-size: 1.2em;
+  }
+  
+  /* Estilos para la probabilidad de lluvia */
+  #rain-chance {
+    font-size: 1.2em;
+  }
+  
+  /* Estilos para la presión */
+  #pressure {
+    font-size: 1.2em;
+  }
+  
+  /* Estilos para el índice UV */
+  #uv-index {
+    font-size: 1.2em;
+  }
+  
+  /* Estilos para el contenedor de la previsión horaria */
+  #hourly-forecast {
+    display: flex;
+    justify-content: space-between; /* Espacio entre elementos */
+    margin-top: 20px;
+  }
+  
+  /* Estilos para cada div de previsión horaria */
+  #hourly-forecast div {
+    flex: 1; /* Cada div ocupará el mismo espacio */
+    text-align: center; /* Centrar el texto */
+    padding: 10px;
+    border: 1px solid #ccc; /* Añadir borde */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #f9f9f9; /* Fondo claro */
+    margin-right: 10px; /* Espacio entre elementos */
+  }
+  
+  #hourly-forecast div:last-child {
+    margin-right: 0; /* Eliminar margen en el último elemento */
+  }
+  
+  .weather-icon {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .wind-speed {
+    margin-top: 10px;
+  }
+  
+  .hourly-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .wind-change {
+    margin-top: 5px;
+  }
+  
+  .up-arrow {
+    color: green;
+  }
+  
+  .down-arrow {
+    color: red;
+  }
+  
+  .rain-probabilities-container {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    width: 300px; /* Ajustar según necesidad */
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente */
+  }
+  
+  .progress-bar-container {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+  }
+  
+  .progress-bar {
+    flex: 1;
+    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    margin: 0 10px;
+  }
+  
+  .progress-bar-fill {
+    height: 100%;
+    background-color: #8A20D5; /* Color de la barra */
+    transition: width 0.5s ease; /* Transición suave */
+  }
+  
+  .progress-bar-time {
+    font-weight: bold;
+  }
+  
+  .progress-bar-percentage {
+    margin-left: 5px;
+  }
+  
+#weather-info{
+    background-image: url(../storage/img/background.png);
+    background-size:contain;
+    background-repeat: no-repeat;
 }
-/*****************************☝️*/
