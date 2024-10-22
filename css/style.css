@@ -9,158 +9,212 @@
 body{
     background: var(--background-1);
     width: 500px;
-    height: 1028;
+    height: 2028;
 }
 
 /* Estilos para la ubicación */
 #location {
-    color: #ccc;
-    font-size: 1.5em;
-    margin-bottom: 10px;
-  }
+  position: relative;
+  top: 30px;
+  left: 40px;
+  color: #ccc;
+  font-size: 2em;
+  width: 300px;
+}
   
-  /* Estilos para la temperatura */
-  #temperature {
-    color: #ccc;
-    font-size: 2em;
-    margin-bottom: 10px;
-  }
+/* Estilos para la temperatura */
+#temperature {
+  position: absolute;
+  top: 200px;
+  left: 20px;
+  color: #ccc;
+  font-size: 5em;
+  width: 300px;
+}
 
-  #feels-like{
-    color: #ccc;
-    font-size: 1.2em;
-    margin-bottom: 10px;
-  }
+#feels-like{
+  position: relative;
+  top: 215px;
+  left: 120px;
+  color: #ccc;
+  font-size: 1.4em;
+  width: 200px;
+}
   
-  /* Estilos para la condición climática */
-  #condition {
-    color: #ccc;
-    font-size: 1.2em;
-    margin-bottom: 10px;
-  }
+/* Estilos para la condición climática */
+#condition {
+  position: absolute;
+  top: 270px;
+  left: 360px;
+  color: #ccc;
+  font-size: 1.2em;
+  width: 140px;
+}
+
+/* Estilos para la fecha y hora */
+#current-time {
+  position: relative;
+  top: 330px;
+  left: 30px;
+  color: #ccc;
+  font-size: 1.2em;
+  width: 380px;
+}
+
+#max-min-temperatures{
+  position: relative;
+  top: 290px;
+  left: 360px;
+  color: #ccc;
+  font-size: 1.2em;
+  width: 100px;
+}
+
+#condition-icon{
+  position: absolute;
+  top: 130px;
+  left: 350px;
+  width: 100px;
+  height: 150px;
+}
   
-  /* Estilos para la fecha y hora */
-  #current-time {
-    color: #ccc;
-    font-size: 1.2em;
-    margin-bottom: 10px;
-  }
+/* Estilos para la velocidad del viento */
+#wind-speed {
+  margin-top: 10px;
+  font-size: 1.2em;
+}
+
+/* Estilos para la probabilidad de lluvia */
+#rain-chance {
+  font-size: 1.2em;
+}
+
+/* Estilos para la presión */
+#pressure {
+  font-size: 1.2em;
+}
+
+/* Estilos para el índice UV */
+#uv-index {
+  font-size: 1.2em;
+}
   
-  /* Estilos para la velocidad del viento */
-  #wind-speed {
-    color: #ccc;
-    margin-top: 10px;
-    font-size: 1.2em;
-  }
+/* Estilos para el contenedor de la previsión horaria */
+#hourly-forecast {    
+  display: flex;
+  justify-content: space-between; /* Espacio entre elementos */
+  margin-top: 20px;
+  max-width: 20vi;
+}
   
-  /* Estilos para la probabilidad de lluvia */
-  #rain-chance {
-    color: #ccc;
-    font-size: 1.2em;
-  }
+/* Estilos para cada div de previsión horaria */
+#hourly-forecast div {
+  flex: 1; /* Cada div ocupará el mismo espacio */
+  text-align: center; /* Centrar el texto */
+  padding: 10px;
+  border: 1px solid #ccc; /* Añadir borde */
+  border-radius: 5px; /* Bordes redondeados */
+  background-color: #f9f9f9; /* Fondo claro */
+  margin-right: 10px; /* Espacio entre elementos */
+}
   
-  /* Estilos para la presión */
-  #pressure {
-    color: #ccc;
-    font-size: 1.2em;
-  }
+#hourly-forecast div:last-child {
+  margin-right: 0; /* Eliminar margen en el último elemento */
+}
   
-  /* Estilos para el índice UV */
-  #uv-index {
-    color: #ccc;
-    font-size: 1.2em;
-  }
+.weather-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.wind-change{
+  font-size: 0.7em;
+}
+
+.hourly-icon {
+  width: 50px;
+  height: 50px;
+}
   
-  /* Estilos para el contenedor de la previsión horaria */
-  #hourly-forecast {    
-    display: flex;
-    justify-content: space-between; /* Espacio entre elementos */
-    margin-top: 20px;
-    max-width: 20vi;
-  }
+.up-arrow {
+  color: green;
+}
   
-  /* Estilos para cada div de previsión horaria */
-  #hourly-forecast div {
-    flex: 1; /* Cada div ocupará el mismo espacio */
-    text-align: center; /* Centrar el texto */
-    padding: 10px;
-    border: 1px solid #ccc; /* Añadir borde */
-    border-radius: 5px; /* Bordes redondeados */
-    background-color: #f9f9f9; /* Fondo claro */
-    margin-right: 10px; /* Espacio entre elementos */
-  }
+.down-arrow {
+  color: red;
+}
   
-  #hourly-forecast div:last-child {
-    margin-right: 0; /* Eliminar margen en el último elemento */
-  }
+.rain-probabilities-container {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  width: 300px; /* Ajustar según necesidad */
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente */
+}
   
-  .weather-icon {
-    width: 30px;
-    height: 30px;
-  }
+.progress-bar-container {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
   
-  .wind-speed {
-    margin-top: 10px;
-  }
+.progress-bar {
+  flex: 1;
+  height: 20px;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  margin: 0 10px;
+}
   
-  .hourly-icon {
-    width: 50px;
-    height: 50px;
-  }
+.progress-bar-fill {
+  height: 100%;
+  background-color: #8A20D5; /* Color de la barra */
+  transition: width 0.5s ease; /* Transición suave */
+}
   
-  .wind-change {
-    margin-top: 5px;
-  }
+.progress-bar-time {
+  font-weight: bold;
+}
   
-  .up-arrow {
-    color: green;
-  }
-  
-  .down-arrow {
-    color: red;
-  }
-  
-  .rain-probabilities-container {
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 10px;
-    width: 300px; /* Ajustar según necesidad */
-    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente */
-  }
-  
-  .progress-bar-container {
-    display: flex;
-    align-items: center;
-    margin: 5px 0;
-  }
-  
-  .progress-bar {
-    flex: 1;
-    height: 20px;
-    background-color: #e0e0e0;
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
-    margin: 0 10px;
-  }
-  
-  .progress-bar-fill {
-    height: 100%;
-    background-color: #8A20D5; /* Color de la barra */
-    transition: width 0.5s ease; /* Transición suave */
-  }
-  
-  .progress-bar-time {
-    font-weight: bold;
-  }
-  
-  .progress-bar-percentage {
-    margin-left: 5px;
-  }
+.progress-bar-percentage {
+  margin-left: 5px;
+}
   
 #weather-info{
     background-image: url(../storage/img/background.png);
     background-repeat: no-repeat;
-    background-size: 500px 400px;
-    background-position-y: -10vi ;
+    background-size: 500px 450px;
+    background-position-y: -10;
+    height: 450px;
+    border-bottom-left-radius: 5%;
+    border-bottom-right-radius: 5%;
+}
+
+
+
+
+.button-container {
+  margin-top: 20px;
+  margin-left: 10px;
+  display: flex;
+  gap: 70px; /* Espaciado específico entre los botones */
+}
+
+.styled-button {
+  background-color: #F6EDFF; /* Color predeterminado */
+  border: none;
+  padding: 15px 30px; /* Espaciado interno del botón */
+  cursor: pointer;
+  transition: background-color 0.3s; /* Transición suave para el cambio de color */
+  border-radius: 5px; /* Bordes redondeados opcionales */
+}
+
+.styled-button:hover {
+  background-color: #E0B6FF; /* Color al pasar el cursor */
+}
+
+.styled-button:active {
+  background-color: #E0B6FF; /* Color al hacer clic */
 }

@@ -1,5 +1,5 @@
 const apiKey = 'e788e8b7f6414e6f9ff180354242110';
-const apiUrl = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=Floridablanca, Colombia&hours=6`;
+const apiUrl = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=Aratoca, Colombia&days=1`;
 
 async function fetchWeatherData() {
   console.log("Fetching weather data..."); // Para depuración
@@ -25,8 +25,8 @@ async function fetchWeatherData() {
 
 function displayCurrentWeather(data) {
   const location = `${data.location.name}, ${data.location.country}`; // Actualizar ubicación
-  const temperatureC = data.current.temp_c;
-  const feelsLikeC = data.current.feelslike_c; // Agregar temperatura "Feels Like"
+  const temperatureC = Math.round(data.current.temp_c); // Redondear a entero
+  const feelsLikeC = Math.round(data.current.feelslike_c); // Redondear a entero
   const conditionText = data.current.condition.text;
   const conditionIcon = data.current.condition.icon;
   const windSpeedMph = data.current.wind_mph; // Velocidad del viento en mph
@@ -34,40 +34,51 @@ function displayCurrentWeather(data) {
   const pressure = data.current.pressure_mb; // Presión en mb
   const uvIndex = data.current.uv; // Índice UV
   const currentTime = new Date(data.location.localtime); // Hora local
+  
+  // Obtener temperaturas máximas y mínimas del día
+  const maxTempC = Math.round(data.forecast.forecastday[0].day.maxtemp_c); // Temperatura máxima del día
+  const minTempC = Math.round(data.forecast.forecastday[0].day.mintemp_c); // Temperatura mínima de la noche
 
   // Convertir la velocidad del viento a km/h
   const windSpeedKmh = (windSpeedMph * 1.60934).toFixed(2); // Conversión de mph a km/h
 
   document.getElementById('location').textContent = `${location}`;
+  
+  // Separar la temperatura y el ícono en elementos distintos
   document.getElementById('temperature').innerHTML = `
-    ${temperatureC}°C
-    <img src="${conditionIcon}" alt="${conditionText}" class="weather-icon">
+    ${temperatureC}°
   `;
-  
-  // Mostrar temperatura "Feels Like"
-  document.getElementById('feels-like').textContent = `Feels Like: ${feelsLikeC}°C`;
 
-  document.getElementById('condition').textContent = `Condition: ${conditionText}`;
+  // Asigna el ícono del clima a un elemento separado
+  document.getElementById('condition-icon').src = conditionIcon; // Elemento para el ícono
+  document.getElementById('condition-icon').alt = conditionText; // Texto alternativo para el ícono
+
+  // Mostrar temperatura "Feels Like"
+  document.getElementById('feels-like').textContent = `Feels like ${feelsLikeC}°`;
+
+  document.getElementById('condition').textContent = `${conditionText}`;
   
-  // Formatear fecha y hora
+  // Formatear fecha y hora (solo mes, día y hora)
   const formattedTime = currentTime.toLocaleString('en-US', {
-    weekday: 'long',
-    year: 'numeric',
     month: 'long',
     day: 'numeric',
     hour: '2-digit',
-    minute: '2-digit',
     hour12: false,
   });
   document.getElementById('current-time').textContent = `${formattedTime}`;
 
+  // Mostrar temperaturas máximas y mínimas con salto de línea
+  document.getElementById('max-min-temperatures').innerHTML = `
+    Day: ${maxTempC}° <br> Night: ${minTempC}°
+  `;
+
   // Mostrar velocidad del viento con más espacio
   document.getElementById('wind-speed').innerHTML = `
-    <div class="wind-speed">Wind Speed: ${windSpeedKmh} km/h</div>
+    <div class="wind-speed">Wind Speed <br> ${windSpeedKmh} km/h</div>
   `;
-  document.getElementById('rain-chance').textContent = `Chance of Rain: ${rainChance}%`;
-  document.getElementById('pressure').textContent = `Pressure: ${pressure} mb`;
-  document.getElementById('uv-index').textContent = `UV Index: ${uvIndex}`;
+  document.getElementById('rain-chance').innerHTML = `Rain Chance <br> ${rainChance}%`;
+  document.getElementById('pressure').innerHTML = `Pressure <br> ${pressure} mb`;
+  document.getElementById('uv-index').innerHTML = `UV Index <br> ${uvIndex}`;
 }
 
 function displayHourlyForecast(data) {
@@ -138,36 +149,33 @@ function compareWindSpeed(data) {
 }
 
 function displayRainProbabilities(data) {
-    const rainProbabilitiesContainer = document.getElementById('rain-probabilities');
-    const forecastHours = data.forecast.forecastday[0].hour;
-  
-    // Horas específicas que quieres mostrar
-    const hoursToCheck = ['19', '20', '21', '22']; // 7 PM, 8 PM, 9 PM, 10 PM
-    rainProbabilitiesContainer.innerHTML = ''; // Limpiar contenido previo
-  
-    // Encapsular la sección en un cuadrado
-    rainProbabilitiesContainer.classList.add('rain-probabilities-container');
-  
-    hoursToCheck.forEach((hour) => {
-      const forecast = forecastHours.find(h => h.time.split(' ')[1].startsWith(hour)); // Filtrar por hora
-  
-      if (forecast) {
-        const rainChance = forecast.chance_of_rain; // Probabilidad de lluvia
-        const hour12 = hour > 12 ? hour - 12 : hour; // Convertir a formato 12 horas
-        const ampm = hour >= 12 ? 'PM' : 'AM'; // Determinar AM/PM
-        const progressBar = `
-          <div class="progress-bar-container">
-            <strong class="progress-bar-time">${hour12} ${ampm}</strong>
-            <div class="progress-bar">
-              <div class="progress-bar-fill" style="width: ${rainChance}%;"></div>
-            </div>
-            <span class="progress-bar-percentage">${rainChance}%</span>
+  const rainProbabilitiesContainer = document.getElementById('rain-probabilities');
+  const forecastHours = data.forecast.forecastday[0].hour;
+
+  // Horas específicas que quieres mostrar (formato 24h)
+  const hoursToCheck = ['19', '20', '21', '22']; // 7 PM, 8 PM, 9 PM, 10 PM
+  rainProbabilitiesContainer.innerHTML = ''; // Limpiar contenido previo
+
+  hoursToCheck.forEach((hour) => {
+    const forecast = forecastHours.find(h => h.time.split(' ')[1].startsWith(hour)); // Filtrar por hora
+
+    if (forecast) {
+      const rainChance = forecast.chance_of_rain; // Probabilidad de lluvia
+      const hour12 = hour > 12 ? hour - 12 : hour; // Convertir a formato 12 horas
+      const ampm = hour >= 12 ? 'PM' : 'AM'; // Determinar AM/PM
+      const progressBar = `
+        <div class="progress-bar-container">
+          <strong class="progress-bar-time">${hour12} ${ampm}</strong>
+          <div class="progress-bar">
+            <div class="progress-bar-fill" style="width: ${rainChance}%; background-color: #8A20D5;"></div>
           </div>
-        `;
-        rainProbabilitiesContainer.innerHTML += progressBar;
-      }
-    });
-  }
-  
+          <span class="progress-bar-percentage">${rainChance}%</span>
+        </div>
+      `;
+      rainProbabilitiesContainer.innerHTML += progressBar;
+    }
+  });
+}
+
 // Llama a la función de obtener datos del clima al cargar el script
 fetchWeatherData();
