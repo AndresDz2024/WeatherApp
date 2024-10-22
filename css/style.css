@@ -8,58 +8,75 @@
 }
 body{
     background: var(--background-1);
+    width: 500px;
+    height: 1028;
 }
 
 /* Estilos para la ubicación */
 #location {
+    color: #ccc;
     font-size: 1.5em;
     margin-bottom: 10px;
   }
   
   /* Estilos para la temperatura */
   #temperature {
+    color: #ccc;
     font-size: 2em;
+    margin-bottom: 10px;
+  }
+
+  #feels-like{
+    color: #ccc;
+    font-size: 1.2em;
     margin-bottom: 10px;
   }
   
   /* Estilos para la condición climática */
   #condition {
+    color: #ccc;
     font-size: 1.2em;
     margin-bottom: 10px;
   }
   
   /* Estilos para la fecha y hora */
   #current-time {
+    color: #ccc;
     font-size: 1.2em;
     margin-bottom: 10px;
   }
   
   /* Estilos para la velocidad del viento */
   #wind-speed {
+    color: #ccc;
     margin-top: 10px;
     font-size: 1.2em;
   }
   
   /* Estilos para la probabilidad de lluvia */
   #rain-chance {
+    color: #ccc;
     font-size: 1.2em;
   }
   
   /* Estilos para la presión */
   #pressure {
+    color: #ccc;
     font-size: 1.2em;
   }
   
   /* Estilos para el índice UV */
   #uv-index {
+    color: #ccc;
     font-size: 1.2em;
   }
   
   /* Estilos para el contenedor de la previsión horaria */
-  #hourly-forecast {
+  #hourly-forecast {    
     display: flex;
     justify-content: space-between; /* Espacio entre elementos */
     margin-top: 20px;
+    max-width: 20vi;
   }
   
   /* Estilos para cada div de previsión horaria */
@@ -143,6 +160,7 @@ body{
   
 #weather-info{
     background-image: url(../storage/img/background.png);
-    background-size:contain;
     background-repeat: no-repeat;
+    background-size: 500px 400px;
+    background-position-y: -10vi ;
 }
