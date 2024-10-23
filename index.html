@@ -9,38 +9,40 @@
     <script type="module" defer src="js/main.js"></script>
 </head>
 <body>
-    <div class="first">
-        <div id="weather-info">
-            <p id="location"></p>
-            <p id="temperature"></p>
-            <img id="condition-icon" alt="Weather Condition" class="weather-icon"> <!-- Elemento separado para el ícono -->
-            <p id="feels-like"></p>
-            <p id="condition"></p>
-            <p id="current-time"></p>
-            <p id="max-min-temperatures"></p> 
+    <div class="content-wrapper">
+        <div class="first">
+            <div id="weather-info">
+                <p id="location"></p>
+                <p id="temperature"></p>
+                <img id="condition-icon" alt="Weather Condition" class="weather-icon">
+                <p id="feels-like"></p>
+                <p id="condition"></p>
+                <p id="current-time"></p>
+                <p id="max-min-temperatures"></p> 
+            </div>
         </div>
-    </div>
-    <div class="button-container">
-        <button class="styled-button">Today</button>
-        <button class="styled-button">Tomorrow</button>
-        <button class="styled-button">10 days</button>
-    </div>
-    <div>
-        <p id="wind-speed"></p>
-        <p id="rain-chance"></p>
-        <p id="pressure"></p>
-        <p id="uv-index"></p>
-    </div>
-    <div id="forecast-info">
-        <h2>Hourly Forecast</h2>
-        <div id="hourly-forecast"></div>
-    </div>
-    <div id="chance-of-rain">
-        <header>
-            <img src="./storage/img/rainy.png">
-            <h2>Chance of Rain</h2>
-        </header>
-        <div id="rain-probabilities"></div>
+        <div class="button-container">
+            <button class="styled-button">Today</button>
+            <button class="styled-button">Tomorrow</button>
+            <button class="styled-button">10 days</button>
+        </div>
+        <div>
+            <p id="wind-speed"></p>
+            <p id="rain-chance"></p>
+            <p id="pressure"></p>
+            <p id="uv-index"></p>
+        </div>
+        <div id="forecast-info">
+            <h2>Hourly Forecast</h2>
+            <div id="hourly-forecast"></div>
+        </div>
+        <div id="chance-of-rain">
+            <header>
+                <img src="./storage/img/rainy.png" alt="Rain icon">
+                <h2>Chance of Rain</h2>
+            </header>
+            <div id="rain-probabilities"></div>
+        </div>
     </div>
 </body>
 </html>

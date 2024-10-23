@@ -179,3 +179,62 @@ function displayRainProbabilities(data) {
 
 // Llama a la función de obtener datos del clima al cargar el script
 fetchWeatherData();
+
+
+// Variables for scroll handling
+let lastScrollY = window.scrollY;
+let isCompact = false;
+let ticking = false;
+const weatherInfo = document.querySelector('#weather-info');
+const contentSpacer = document.createElement('div');
+contentSpacer.className = 'content-spacer';
+
+// Insert spacer after weather info
+weatherInfo.parentNode.insertBefore(contentSpacer, weatherInfo.nextSibling);
+
+// Throttled scroll handler
+function handleScroll() {
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            const scrollingDown = window.scrollY > lastScrollY;
+            
+            // Toggle compact state
+            if (scrollingDown && window.scrollY > 50 && !isCompact) {
+                weatherInfo.classList.add('compact');
+                contentSpacer.classList.add('active');
+                isCompact = true;
+                document.body.style.paddingTop = '0';
+            } else if (!scrollingDown && window.scrollY <= 50 && isCompact) {
+                weatherInfo.classList.remove('compact');
+                contentSpacer.classList.remove('active');
+                isCompact = false;
+                document.body.style.paddingTop = '0';
+            }
+            
+            lastScrollY = window.scrollY;
+            ticking = false;
+        });
+        
+        ticking = true;
+    }
+}
+
+// Event listeners
+window.addEventListener('scroll', handleScroll, { passive: true });
+
+// Initial state check
+window.addEventListener('load', () => {
+    if (window.scrollY > 50) {
+        weatherInfo.classList.add('compact');
+        contentSpacer.classList.add('active');
+        isCompact = true;
+    }
+});
+
+// Handle resize events
+window.addEventListener('resize', () => {
+    if (isCompact) {
+        weatherInfo.style.left = '50%';
+        weatherInfo.style.transform = 'translateX(-50%)';
+    }
+}, { passive: true });
