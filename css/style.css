@@ -76,7 +76,7 @@ body {
 
 #temperature {
   top: 200px;
-  left: 20px;
+  left: 30px;
   color: #ccc;
   font-size: 5em;
   width: 300px;
@@ -85,20 +85,20 @@ body {
 #condition-icon {
   top: 130px;
   left: 350px;
-  width: 100px;
+  width: 120px;
   height: 150px;
 }
 
 #feels-like {
-  top: 215px;
+  top: 250px;
   left: 120px;
   color: #ccc;
-  font-size: 1.4em;
+  font-size: 1.2em;
   width: 200px;
 }
 
 #condition {
-  top: 270px;
+  top: 280px;
   left: 360px;
   color: #ccc;
   font-size: 1.2em;
@@ -106,15 +106,15 @@ body {
 }
 
 #current-time {
-  top: 330px;
-  left: 30px;
+  top: 390px;
+  left: 50px;
   color: #ccc;
   font-size: 1.2em;
   width: 380px;
 }
 
 #max-min-temperatures {
-  top: 290px;
+  top: 380px;
   left: 360px;
   color: #ccc;
   font-size: 1.2em;
@@ -221,23 +221,23 @@ body {
 }
 
 #weather-info.compact #temperature {
-  top: 50px;
+  top: 60px;
   left: 20px;
-  font-size: 3em;
+  font-size: 4.5em;
   color: #000;
 }
 
 #weather-info.compact #condition-icon {
-  top: 40px;
-  left: auto;
+  top: 50px;
+  left: 350px;
   right: 20px;
-  width: 60px;
-  height: 60px;
+  width: 100px;
+  height: 100px;
 }
 
 #weather-info.compact #feels-like {
-  top: 120px;
-  left: 20px;
+  top: 108px;
+  left: 100px;
   font-size: 1em;
   color: #000;
 }
@@ -248,6 +248,7 @@ body {
   left: auto;
   font-size: 1em;
   color: #000;
+  display: none;
 }
 
 #weather-info.compact #current-time {
@@ -255,6 +256,7 @@ body {
   left: 20px;
   font-size: 1em;
   color: #000;
+  display: none;
 }
 
 #weather-info.compact #max-min-temperatures {
@@ -263,6 +265,7 @@ body {
   left: auto;
   font-size: 1em;
   color: #000;
+  display: none;
 }
 
 /* Íconos y elementos adicionales */
