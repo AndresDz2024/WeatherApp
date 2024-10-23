@@ -10,32 +10,52 @@
 </head>
 <body>
     <div class="content-wrapper">
-        <div class="first">
-            <div id="weather-info">
-                <p id="location"></p>
-                <p id="temperature"></p>
-                <img id="condition-icon" alt="Weather Condition" class="weather-icon">
-                <p id="feels-like"></p>
-                <p id="condition"></p>
-                <p id="current-time"></p>
-                <p id="max-min-temperatures"></p> 
+        <div class="header-group">
+            <div class="first">
+                <div id="weather-info">
+                    <p id="location"></p>
+                    <p id="temperature"></p>
+                    <img id="condition-icon" alt="Weather Condition" class="weather-icon">
+                    <p id="feels-like"></p>
+                    <p id="condition"></p>
+                    <p id="current-time"></p>
+                    <p id="max-min-temperatures"></p> 
+                </div>
+            </div>
+            <div class="button-container">
+                <button class="styled-button">Today</button>
+                <button class="styled-button">Tomorrow</button>
+                <button class="styled-button">10 days</button>
             </div>
         </div>
-        <div class="button-container">
-            <button class="styled-button">Today</button>
-            <button class="styled-button">Tomorrow</button>
-            <button class="styled-button">10 days</button>
-        </div>
-        <div>
-            <p id="wind-speed"></p>
-            <p id="rain-chance"></p>
-            <p id="pressure"></p>
-            <p id="uv-index"></p>
+        <div class="weather-details">
+            <table>
+                <tr>
+                    <td>
+                        <p id="wind-speed" class="detail-value"></p>
+                    </td>
+                    <td>
+                        <p id="rain-chance" class="detail-value"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p id="pressure" class="detail-value"></p>
+                    </td>
+                    <td>
+                        <p id="uv-index" class="detail-value"></p>
+                    </td>
+                </tr>
+            </table>
         </div>
         <div id="forecast-info">
-            <h2>Hourly Forecast</h2>
+            <header>
+                <img src="./storage/img/history_toggle_off.png" alt="reloj">
+                <h2>Hourly Forecast</h2>
+            </header>
             <div id="hourly-forecast"></div>
         </div>
+        <img src="./storage/img/img123.png" alt="">
         <div id="chance-of-rain">
             <header>
                 <img src="./storage/img/rainy.png" alt="Rain icon">
@@ -44,5 +64,9 @@
             <div id="rain-probabilities"></div>
         </div>
     </div>
+    <div id="sun-info">
+        <p id="sunrise"></p>
+        <p id="sunset"></p>
+    </div>    
 </body>
 </html>

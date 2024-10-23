@@ -16,11 +16,23 @@ async function fetchWeatherData() {
     // Llama a la función para comparar la velocidad del viento
     compareWindSpeed(data);
 
+    // Llama a la función para mostrar los tiempos de amanecer y atardecer
+    displaySunriseSunset(data);
+
     // Llama a la función para mostrar probabilidades de lluvia
     displayRainProbabilities(data);
   } catch (error) {
     console.error('Error fetching weather data:', error);
   }
+}
+
+// Nueva función para mostrar tiempos de amanecer y atardecer
+function displaySunriseSunset(data) {
+  const sunriseTime = data.forecast.forecastday[0].astro.sunrise;
+  const sunsetTime = data.forecast.forecastday[0].astro.sunset;
+  
+  document.getElementById('sunrise').textContent = `Sunrise: ${sunriseTime}`;
+  document.getElementById('sunset').textContent = `Sunset: ${sunsetTime}`;
 }
 
 function displayCurrentWeather(data) {
@@ -181,34 +193,35 @@ function displayRainProbabilities(data) {
 fetchWeatherData();
 
 
-// Variables for scroll handling
+// Variables para el scroll
 let lastScrollY = window.scrollY;
 let isCompact = false;
 let ticking = false;
+const headerGroup = document.querySelector('.header-group');
 const weatherInfo = document.querySelector('#weather-info');
 const contentSpacer = document.createElement('div');
 contentSpacer.className = 'content-spacer';
 
-// Insert spacer after weather info
-weatherInfo.parentNode.insertBefore(contentSpacer, weatherInfo.nextSibling);
+// Insertar el espaciador después del grupo de header
+headerGroup.parentNode.insertBefore(contentSpacer, headerGroup.nextSibling);
 
-// Throttled scroll handler
+// Manejo del scroll con throttling
 function handleScroll() {
     if (!ticking) {
         window.requestAnimationFrame(() => {
             const scrollingDown = window.scrollY > lastScrollY;
             
-            // Toggle compact state
+            // Actualizar estado basado en el scroll
             if (scrollingDown && window.scrollY > 50 && !isCompact) {
+                headerGroup.classList.add('compact');
                 weatherInfo.classList.add('compact');
                 contentSpacer.classList.add('active');
                 isCompact = true;
-                document.body.style.paddingTop = '0';
             } else if (!scrollingDown && window.scrollY <= 50 && isCompact) {
+                headerGroup.classList.remove('compact');
                 weatherInfo.classList.remove('compact');
                 contentSpacer.classList.remove('active');
                 isCompact = false;
-                document.body.style.paddingTop = '0';
             }
             
             lastScrollY = window.scrollY;
@@ -222,19 +235,20 @@ function handleScroll() {
 // Event listeners
 window.addEventListener('scroll', handleScroll, { passive: true });
 
-// Initial state check
+// Verificar estado inicial
 window.addEventListener('load', () => {
     if (window.scrollY > 50) {
+        headerGroup.classList.add('compact');
         weatherInfo.classList.add('compact');
         contentSpacer.classList.add('active');
         isCompact = true;
     }
 });
 
-// Handle resize events
+// Manejar eventos de resize
 window.addEventListener('resize', () => {
     if (isCompact) {
-        weatherInfo.style.left = '50%';
-        weatherInfo.style.transform = 'translateX(-50%)';
+        headerGroup.style.left = '50%';
+        headerGroup.style.transform = 'translateX(-50%)';
     }
 }, { passive: true });
